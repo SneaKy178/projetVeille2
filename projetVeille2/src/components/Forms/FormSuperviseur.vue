@@ -18,11 +18,11 @@
     <label>Numéro de téléphone : </label>
     <input type="text" required v-model="numTelephone" />
 
-    <label>Nom de votre entreprise : </label>
-    <input type="text" required v-model="entreprise" />
+    <label>Le nom de votre département : </label>
+    <input type="text" required v-model="departement" />
 
-    <label>L'adresse de votre entreprise: </label>
-    <input type="text" required v-model="adresseEntreprise" />
+    <label>Votre spécialité: </label>
+    <input type="text" required v-model="specialite" />
 
     <div>
       <input type="checkbox" v-model="terms" required />
@@ -30,7 +30,7 @@
     </div>
 
     <div class="submit">
-      <button>Créez votre compte moniteur</button>
+      <button>Créez votre compte superviseur</button>
     </div>
   </form>
 </template>
@@ -44,8 +44,8 @@ export default {
       courriel: "",
       password: "",
       numTelephone: "",
-      entreprise: "",
-      adresseEntreprise: "",
+      departement: "",
+      specialite: "",
       terms: false,
       passwordError: "",
     };
@@ -59,22 +59,24 @@ export default {
           : "Le mot de passe doit avoir au moins 6 caractères";
       if (!this.passwordError) {
         var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:9191/stage/moniteur");
+        request.open("POST", "http://localhost:9191/stage/superviseur");
         request.setRequestHeader(
           "Content-Type",
           "application/json; charset=UTF-8"
         );
 
-        const moniteur = JSON.stringify({
+        const superviseur = JSON.stringify({
           prenom: this.prenom,
           nom: this.nom,
           courriel: this.courriel,
           password: this.password,
           numTelephone: this.numTelephone,
-          nomEntreprise: this.entreprise,
-          adresseEntreprise: this.adresseEntreprise,
+          departement: this.departement,
+          specialite: this.specialite,
         });
-        request.send(moniteur);
+        console.log(superviseur)
+
+        request.send(superviseur);
       }
     },
   },

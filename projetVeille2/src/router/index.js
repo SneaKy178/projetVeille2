@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SignupForm from '../components/SignupForm.vue'
 import FormEtudiant from '../components/Forms/FormEtudiant.vue'
 import FormMoniteur from '../components/Forms/FormMoniteur.vue'
+import FormSuperviseur from '../components/Forms/FormSuperviseur.vue'
 import Home from '../components/Home.vue'
 
 const routes = [
   {
-    path : '/',
+    path: '/',
     component: Home
   },
   {
@@ -20,7 +21,12 @@ const routes = [
   {
     path: '/formMoniteur',
     component: FormMoniteur
+  },
+  {
+    path: '/formSuperviseur',
+    component: FormSuperviseur
   }
+
 
 
 ]
