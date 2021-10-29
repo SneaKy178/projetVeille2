@@ -18,24 +18,11 @@
     <label>Numéro de téléphone : </label>
     <input type="text" required v-model="numTelephone" />
 
-    <label>Programme : </label>
-    <input type="text" required v-model="programme" />
+    <label>Nom de votre entreprise : </label>
+    <input type="text" required v-model="entreprise" />
 
-    <label>Adresse : </label>
-    <input type="text" required v-model="adresse" />
-
-    <label>Numéro de matricule : </label>
-    <input type="text" required v-model="numMatricule" />
-
-    <div>
-      <input type="checkbox" v-model="voiture" />
-      <label>Avez-vous une voiture?</label>
-    </div>
-
-    <div>
-      <input type="checkbox" v-model="license" />
-      <label>Avez-vous votre permis de conduite?</label>
-    </div>
+    <label>L'adresse de votre entreprise: </label>
+    <input type="text" required v-model="adresseEntreprise" />
 
     <div>
       <input type="checkbox" v-model="terms" required />
@@ -43,7 +30,7 @@
     </div>
 
     <div class="submit">
-      <button>Créez votre compte étudiant</button>
+      <button>Créez votre compte moniteur</button>
     </div>
   </form>
 </template>
@@ -57,11 +44,8 @@ export default {
       courriel: "",
       password: "",
       numTelephone: "",
-      programme: "",
-      adresse: "",
-      numMatricule: "",
-      voiture: false,
-      license: false,
+      entreprise: "",
+      adresseEntreprise: "",
       terms: false,
       passwordError: "",
     };
@@ -75,31 +59,26 @@ export default {
           : "Le mot de passe doit avoir au moins 6 caractères";
       if (!this.passwordError) {
         var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:9191/stage/etudiant");
+        request.open("POST", "http://localhost:9191/stage/moniteur");
         request.setRequestHeader(
           "Content-Type",
           "application/json; charset=UTF-8"
         );
 
-        const etudiant = JSON.stringify({
+        const moniteur = JSON.stringify({
           prenom: this.prenom,
           nom: this.nom,
           courriel: this.courriel,
           password: this.password,
           numTelephone: this.numTelephone,
-          programme: this.programme,
-          adresse: this.adresse,
-          numMatricule: this.numMatricule,
-          hasLicense: this.license,
-          hasVoiture: this.voiture,
+          nomEntreprise: this.entreprise,
+          adresseEntreprise: this.adresseEntreprise,
         });
+        console.log(moniteur)
 
-        request.send(etudiant);
+        request.send(moniteur);
       }
     },
-
-
-    
   },
 };
 </script>

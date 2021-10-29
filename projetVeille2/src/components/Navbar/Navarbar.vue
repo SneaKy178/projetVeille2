@@ -1,33 +1,14 @@
 <template>
   <nav>
     <div class="menu-item"> <router-link to="/">Home</router-link></div>
-    <Dropdown title="Form" :items="services"/>
+    <div class="menu-item"> <router-link to="/formEtudiant">Form Etudiant</router-link></div>
+    <div class="menu-item"> <router-link to="/formMoniteur">Form Moniteur</router-link></div>
   </nav>
 </template>
 
 <script>
-import Dropdown from './Dropdown.vue'
 export default {
   name: "navbar",
-  components: {Dropdown},
-  data() {
-    return {
-      services: [
-        {
-          title: "Signup",
-          link: "/signupForm",
-        },
-        {
-          title: "Design",
-          link: "#",
-        },
-        {
-            title: "Videos",
-            link: '#',
-        }
-      ],
-    };
-  },
 };
 </script>
 
