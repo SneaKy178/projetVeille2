@@ -1,9 +1,18 @@
 <template>
   <nav>
-    <div class="menu-item"> <router-link to="/">Home</router-link></div>
-    <div class="menu-item"> <router-link to="/formEtudiant">Form Etudiant</router-link></div>
-    <div class="menu-item"> <router-link to="/formMoniteur">Form Moniteur</router-link></div>
-     <div class="menu-item"> <router-link to="/formSuperviseur">Form Superviseur</router-link></div>
+    <div class="menu-item"><router-link to="/">Home</router-link></div>
+    <div class="menu-item">
+      <router-link to="/formEtudiant">Form Etudiant</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link to="/formMoniteur">Form Moniteur</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link to="/formSuperviseur">Form Superviseur</router-link>
+    </div>
+    <div class="menu-item">
+      <router-link to="/login">Login</router-link>
+    </div>
   </nav>
 </template>
 
