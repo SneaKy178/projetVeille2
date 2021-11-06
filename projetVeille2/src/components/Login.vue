@@ -53,7 +53,7 @@ export default {
           this.state.courriel = data.courriel;
           this.state.role = data.role;
         });
-      this.$router.push({ path: "AccountDetails" });
+      // this.$router.push({ path: "AccountDetails" });
     },
   },
 };

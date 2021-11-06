@@ -11,6 +11,9 @@
       <router-link to="/formSuperviseur">Form Superviseur</router-link>
     </div>
     <div class="menu-item">
+      <router-link to="/accountDetails">Account Details</router-link>
+    </div>
+    <div class="menu-item">
       <router-link to="/login">Login</router-link>
     </div>
   </nav>
