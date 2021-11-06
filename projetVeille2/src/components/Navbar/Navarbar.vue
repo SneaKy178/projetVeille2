@@ -1,6 +1,7 @@
 <template>
   <nav>
-    <div class="menu-item"><router-link to="/">Home</router-link></div>
+    <!-- <div v-if="!fullUser.isLoggedIn === 'true'"> -->
+    <div class="menu-item"><router-link to="/home">Home</router-link></div>
     <div class="menu-item">
       <router-link to="/formEtudiant">Form Etudiant</router-link>
     </div>
@@ -13,6 +14,7 @@
     <div class="menu-item">
       <router-link to="/accountDetails">Account Details</router-link>
     </div>
+    <!-- </div> -->
     <div class="menu-item">
       <router-link to="/login">Login</router-link>
     </div>

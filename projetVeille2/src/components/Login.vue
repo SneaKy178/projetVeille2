@@ -5,14 +5,6 @@
 
     <label>Mot de passe : </label>
     <input type="password" required v-model="password" />
-    <div v-if="passwordError" class="error">
-      {{ passwordError }}
-    </div>
-
-    <div>
-      <input type="checkbox" v-model="terms" required />
-      <label>Acceptez vous de suivre les règles?</label>
-    </div>
 
     <div class="submit">
       <button>Créez votre compte étudiant</button>
@@ -32,8 +24,6 @@ export default {
     return {
       courriel: "",
       password: "",
-      terms: false,
-      passwordError: "",
     };
   },
   methods: {
@@ -52,8 +42,9 @@ export default {
           console.log(data, "Objet de retour data");
           this.state.courriel = data.courriel;
           this.state.role = data.role;
+          this.state.isLoggedIn = true;
+          this.$router.push("/home");
         });
-      // this.$router.push({ path: "AccountDetails" });
     },
   },
 };

@@ -10,7 +10,7 @@ import Home from '../components/Home.vue'
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Login
   },
   {
     path: '/signupForm',
@@ -35,6 +35,10 @@ const routes = [
   {
     path: '/accountDetails',
     component: AccountDetails
+  },
+  {
+    path: '/home',
+    component: Home
   }
 
 

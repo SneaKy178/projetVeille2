@@ -27,25 +27,11 @@ import global from "./global";
 export default {
   setup() {
     const { state } = global;
-    const fullUser = ref({
-      id: Number,
-      prenom: String,
-      nom: String,
-      courriel: String,
-      password: String,
-      numTelephone: String,
-      role: String,
-      programme: String,
-      adresse: String,
-      numMatricule: String,
-      hasLicense: Boolean,
-      hasVoiture: Boolean,
-      departement: String,
-      nomEntreprise: String,
-      adresseEntreprise: String,
-      specialite: String,
-    });
+    const fullUser = ref({});
     return { state, fullUser };
+  },
+  created() {
+    this.fetchData();
   },
   methods: {
     fetchData() {
@@ -60,9 +46,6 @@ export default {
           console.log(this.fullUser, "fulluser");
         });
     },
-  },
-  beforeMount() {
-    this.fetchData();
   },
 };
 </script>
