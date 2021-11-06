@@ -13,6 +13,9 @@
       <input type="checkbox" v-model="terms" required />
       <label>Acceptez vous de suivre les règles?</label>
     </div>
+    <div>
+      {{ state.courriel }}
+    </div>
 
     <div class="submit">
       <button>Créez votre compte étudiant</button>
@@ -21,7 +24,13 @@
 </template>
 
 <script>
+import global from "./global";
+
 export default {
+  setup() {
+    const { state } = global;
+    return { state };
+  },
   data() {
     return {
       courriel: "",
@@ -32,6 +41,7 @@ export default {
   },
   methods: {
     handleSubmit() {
+      console.log("ok");
       fetch(`http://localhost:9191/user/${this.courriel}/${this.password}`)
         .then((res) => {
           if (res.ok) {
@@ -43,6 +53,8 @@ export default {
         })
         .then((data) => {
           console.log(data, "Objet de retour data");
+          this.state.courriel = data.courriel;
+          this.state.password = data.password;
         });
       this.$router.push({ path: "/" });
     },

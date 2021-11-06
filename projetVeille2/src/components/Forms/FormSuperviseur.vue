@@ -74,7 +74,7 @@ export default {
           departement: this.departement,
           specialite: this.specialite,
         });
-        console.log(superviseur)
+        console.log(superviseur);
 
         request.send(superviseur);
       }
