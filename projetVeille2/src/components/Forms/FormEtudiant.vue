@@ -97,9 +97,6 @@ export default {
         request.send(etudiant);
       }
     },
-
-
-    
   },
 };
 </script>

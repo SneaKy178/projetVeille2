@@ -3,7 +3,7 @@ import { reactive } from "vue";
 const state = reactive({
     courriel: "",
     role: "",
-    isLoggedIn: "",
+    isLoggedIn: false,
 })
 
 export default { state }
