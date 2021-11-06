@@ -13,9 +13,6 @@
       <input type="checkbox" v-model="terms" required />
       <label>Acceptez vous de suivre les règles?</label>
     </div>
-    <div>
-      {{ state.courriel }}
-    </div>
 
     <div class="submit">
       <button>Créez votre compte étudiant</button>
@@ -54,9 +51,9 @@ export default {
         .then((data) => {
           console.log(data, "Objet de retour data");
           this.state.courriel = data.courriel;
-          this.state.password = data.password;
+          this.state.role = data.role;
         });
-      this.$router.push({ path: "/" });
+      this.$router.push({ path: "AccountDetails" });
     },
   },
 };

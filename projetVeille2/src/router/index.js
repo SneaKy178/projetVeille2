@@ -4,6 +4,7 @@ import FormEtudiant from '../components/Forms/FormEtudiant.vue'
 import FormMoniteur from '../components/Forms/FormMoniteur.vue'
 import FormSuperviseur from '../components/Forms/FormSuperviseur.vue'
 import Login from '../components/Login.vue'
+import AccountDetails from '../components/AccountDetails.vue'
 import Home from '../components/Home.vue'
 
 const routes = [
@@ -26,9 +27,14 @@ const routes = [
   {
     path: '/formSuperviseur',
     component: FormSuperviseur
-  }, {
+  },
+  {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/accountDetails',
+    component: AccountDetails
   }
 
 
