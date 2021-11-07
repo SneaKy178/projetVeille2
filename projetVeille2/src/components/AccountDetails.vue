@@ -25,12 +25,12 @@
       <input type="text" readonly :value="fullUser.numMatricule" />
 
       <div>
-        <input type="checkbox" :checked="fullUser.hasVoiture" />
+        <input type="checkbox" disabled :checked="fullUser.hasVoiture" />
         <label>Avez-vous une voiture?</label>
       </div>
 
       <div>
-        <input type="checkbox" :checked="fullUser.hasLicense" />
+        <input type="checkbox" disabled :checked="fullUser.hasLicense" />
         <label>Avez-vous votre permis de conduite?</label>
       </div>
     </div>
@@ -47,6 +47,10 @@
 
       <label>L'adresse de votre entreprise: </label>
       <input type="text" readonly :value="fullUser.adresseEntreprise" />
+    </div>
+    <div v-if="fullUser.role === 'GESTIONNAIRE'">
+      <label>Le nom de votre département : </label>
+      <input type="text" readonly :value="fullUser.departement" />
     </div>
   </form>
 </template>
@@ -80,3 +84,6 @@ export default {
   },
 };
 </script>
+
+<style>
+</style>

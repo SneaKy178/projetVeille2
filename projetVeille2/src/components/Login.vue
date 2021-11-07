@@ -7,7 +7,7 @@
     <input type="password" required v-model="password" />
 
     <div class="submit">
-      <button>Créez votre compte étudiant</button>
+      <button>Login</button>
     </div>
   </form>
 </template>
@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("ok");
       fetch(`http://localhost:9191/user/${this.courriel}/${this.password}`)
         .then((res) => {
           if (res.ok) {
