@@ -78,17 +78,17 @@ export default {
         this.password
       )
         ? ""
-        : "Le mot de passe requiert au moins 6 charactères, une majuscule, une minuscule et un chiffre. ";
+        : "Le mot de passe requiert au moins 6 lettres, une majuscule, une minuscule et un chiffre. ";
       this.prenomError =
         /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(
           this.prenom
         )
           ? ""
-          : "Le prénom ne peut pas contenir de chiffre ou de charactères spéciaux";
+          : "Le prénom ne peut pas contenir de chiffre ou de caractères spéciaux.";
       this.nomError =
         /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(this.nom)
           ? ""
-          : "Le prénom ne peut pas contenir de chiffre ou de charactères spéciaux";
+          : "Le nom ne peut pas contenir de chiffre ou de caractères spéciaux.";
       if (!this.passwordError && !this.prenomError && !this.nomError) {
         var request = new XMLHttpRequest();
         request.open("POST", "http://localhost:9191/stage/etudiant");
