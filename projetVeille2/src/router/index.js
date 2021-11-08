@@ -13,10 +13,6 @@ const routes = [
     component: Login
   },
   {
-    path: '/signupForm',
-    component: SignupForm
-  },
-  {
     path: '/formEtudiant',
     component: FormEtudiant
   },
