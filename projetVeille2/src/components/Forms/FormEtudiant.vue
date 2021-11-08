@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      //validate password
       this.passwordError = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(
         this.password
       )

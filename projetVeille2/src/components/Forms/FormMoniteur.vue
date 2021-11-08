@@ -2,9 +2,15 @@
   <form @submit.prevent="handleSubmit">
     <label>Prénom : </label>
     <input type="text" required v-model="prenom" />
+    <div v-if="prenomError" class="error">
+      {{ prenomError }}
+    </div>
 
     <label>Nom : </label>
     <input type="text" required v-model="nom" />
+    <div v-if="nomError" class="error">
+      {{ nomError }}
+    </div>
 
     <label>Courriel : </label>
     <input type="email" required v-model="courriel" />
@@ -52,12 +58,22 @@ export default {
   },
   methods: {
     handleSubmit() {
-      //validate password
-      this.passwordError =
-        this.password.length > 5
+      this.passwordError = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(
+        this.password
+      )
+        ? ""
+        : "Le mot de passe requiert au moins 6 charactères, une majuscule, une minuscule et un chiffre. ";
+      this.prenomError =
+        /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(
+          this.prenom
+        )
           ? ""
-          : "Le mot de passe doit avoir au moins 6 caractères";
-      if (!this.passwordError) {
+          : "Le prénom ne peut pas contenir de chiffre ou de charactères spéciaux";
+      this.nomError =
+        /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(this.nom)
+          ? ""
+          : "Le prénom ne peut pas contenir de chiffre ou de charactères spéciaux";
+      if (!this.passwordError && !this.prenomError && !this.nomError) {
         var request = new XMLHttpRequest();
         request.open("POST", "http://localhost:9191/stage/moniteur");
         request.setRequestHeader(
@@ -75,6 +91,7 @@ export default {
           adresseEntreprise: this.adresseEntreprise,
         });
         request.send(moniteur);
+        this.$router.push("/login");
       }
     },
   },
