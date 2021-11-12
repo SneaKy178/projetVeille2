@@ -1,43 +1,59 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <label>Titre : </label>
-    <input type="text" required v-model="titre" />
+  <div
+    v-if="
+      (state.isLoggedIn && state.role == 'GESTIONNAIRE') ||
+      (state.isLoggedIn && state.role == 'MONITEUR')
+    "
+  >
+    <form @submit.prevent="handleSubmit">
+      <label>Titre : </label>
+      <input type="text" required v-model="titre" />
 
-    <label>Description : </label>
-    <input type="text" required v-model="description" />
+      <label>Description : </label>
+      <input type="text" required v-model="description" />
 
-    <label>Nom de l'entreprise : </label>
-    <input type="text" required v-model="nomEntreprise" />
+      <label>Nom de l'entreprise : </label>
+      <input type="text" required v-model="nomEntreprise" />
 
-    <label>Adresse de l'entreprise : </label>
-    <input type="text" required v-model="adresseEntreprise" />
+      <label>Adresse de l'entreprise : </label>
+      <input type="text" required v-model="adresseEntreprise" />
 
-    <label>Date du début du stage : </label>
-    <input type="date" required v-model="debutStage" />
+      <label>Date du début du stage : </label>
+      <input type="date" required v-model="debutStage" />
 
-    <label>Date de la fin du stage : </label>
-    <input type="date" required v-model="finStage" />
+      <label>Date de la fin du stage : </label>
+      <input type="date" required v-model="finStage" />
 
-    <label>Nombre total de semaine : </label>
-    <input type="number" required v-model="totalSemaine" />
+      <label>Nombre total de semaine : </label>
+      <input type="number" required v-model="totalSemaine" />
 
-    <label>Nombre d'heure par semaine : </label>
-    <input type="number" required v-model="heureSemaine" />
+      <label>Nombre d'heure par semaine : </label>
+      <input type="number" required v-model="heureSemaine" />
 
-    <label>L'horaire de travail: </label>
-    <input type="text" required v-model="horaire" />
+      <label>L'horaire de travail: </label>
+      <input type="text" required v-model="horaire" />
 
-    <label>Salaire de l'heure : </label>
-    <input type="number" required v-model="salaire" />
+      <label>Salaire de l'heure : </label>
+      <input type="number" required v-model="salaire" />
 
-    <div class="submit">
-      <button>Créez votre compte moniteur</button>
-    </div>
-  </form>
+      <div class="submit">
+        <button>Créez l'offre</button>
+      </div>
+    </form>
+  </div>
+  <div v-else class="center">
+    <h1>Veuillez vous conneter</h1>
+    <button @click="login">Login</button>
+  </div>
 </template>
 
 <script>
+import global from "../global";
 export default {
+  setup() {
+    const { state } = global;
+    return { state };
+  },
   data() {
     return {
       titre: "",
@@ -75,7 +91,12 @@ export default {
       });
       request.send(offres);
     },
-    // },
+    login() {
+      this.$router.push("/login");
+    },
+    home() {
+      this.$router.push("/home");
+    },
   },
 };
 </script>
@@ -145,5 +166,10 @@ button {
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;
+}
+
+.center {
+  margin-top: 50px;
+  text-align: center;
 }
 </style>

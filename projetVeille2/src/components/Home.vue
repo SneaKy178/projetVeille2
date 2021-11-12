@@ -1,7 +1,18 @@
 <template>
-  <div class="center">
-    <h1>Bienvu {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
-    <button @click="test">Go to account details</button>
+  <div v-if="state.isLoggedIn" class="center">
+    <div>
+      <h1>Bienvu {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
+    </div>
+    <button @click="accountDetails">Voir information du compte</button><br />
+    <div
+      v-if="fullUser.role === 'MONITEUR' || fullUser.role === 'GESTIONNAIRE'"
+    >
+      <button @click="createOffer">Créer une offre de stage</button>
+    </div>
+  </div>
+  <div v-else class="center">
+    <h1>Veuillez vous conneter</h1>
+    <button @click="login">Login</button><br />
   </div>
 </template>
 
@@ -30,8 +41,14 @@ export default {
           console.log(this.fullUser, "fulluser");
         });
     },
-    test() {
+    accountDetails() {
       this.$router.push("/accountDetails");
+    },
+    createOffer() {
+      this.$router.push("/formOffres");
+    },
+    login() {
+      this.$router.push("/login");
     },
   },
 };
