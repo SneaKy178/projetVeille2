@@ -12,6 +12,12 @@
     </div>
     <button class="submit">Submit</button>
   </form>
+  <table>
+    <tr v-for="cv in cvs" v-bind:key="cv">
+      <td>{{ cv.nom }}</td>
+      <td>{{ cv.dateSoumission }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>
@@ -21,6 +27,8 @@ import global from "./global";
 export default {
   created() {
     this.fetchUser();
+    this.fetchCvs();
+    setInterval(() => this.fetchCvs(), 100);
   },
   setup() {
     const { state } = global;
@@ -97,5 +105,21 @@ export default {
   },
 };
 </script>
+<style scoped>
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+table,
+td,
+th {
+  border: 1px solid black;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
+</style>
 
 
