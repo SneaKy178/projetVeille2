@@ -4,10 +4,11 @@
       <h1>Bienvu {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
     </div>
     <button @click="accountDetails">Voir information du compte</button><br />
-    <div
-      v-if="fullUser.role === 'MONITEUR' || fullUser.role === 'GESTIONNAIRE'"
-    >
+    <div v-if="state.role === 'MONITEUR' || state.role === 'GESTIONNAIRE'">
       <button @click="createOffer">Créer une offre de stage</button>
+    </div>
+    <div v-if="state.role === 'ETUDIANT'">
+      <button @click="dropCv">Soumettre ou voir votre/vos cvs</button>
     </div>
   </div>
   <div v-else class="center">
@@ -30,7 +31,6 @@ export default {
   },
   methods: {
     fetchData() {
-      console.log(this.state.courriel);
       fetch(`http://localhost:9191/user/${this.state.courriel}`)
         .then((res) => {
           return res.json();
@@ -49,6 +49,9 @@ export default {
     },
     login() {
       this.$router.push("/login");
+    },
+    dropCv() {
+      this.$router.push("/dndCv");
     },
   },
 };

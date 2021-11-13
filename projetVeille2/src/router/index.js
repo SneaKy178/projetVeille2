@@ -5,6 +5,7 @@ import FormSuperviseur from '../components/Forms/FormSuperviseur.vue'
 import FormOffres from '../components/Forms/FormOffres'
 import Login from '../components/Login.vue'
 import AccountDetails from '../components/AccountDetails.vue'
+import DnD from '../components/DnDCv.vue'
 import Home from '../components/Home.vue'
 
 const routes = [
@@ -35,6 +36,10 @@ const routes = [
   {
     path: '/formOffres',
     component: FormOffres
+  },
+  {
+    path: '/dndCv',
+    component: DnD
   },
   {
     path: '/home',
