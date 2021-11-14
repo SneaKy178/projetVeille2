@@ -6,6 +6,7 @@ import FormOffres from '../components/Forms/FormOffres'
 import Login from '../components/Login.vue'
 import AccountDetails from '../components/AccountDetails.vue'
 import DnD from '../components/DnDCv.vue'
+import DashboardSuperviseur from '../components/Dashboard/DashboardSuperviseur.vue'
 import Home from '../components/Home.vue'
 
 const routes = [
@@ -40,6 +41,10 @@ const routes = [
   {
     path: '/dndCv',
     component: DnD
+  },
+  {
+    path: '/dashboardSuperviseur',
+    component: DashboardSuperviseur
   },
   {
     path: '/home',

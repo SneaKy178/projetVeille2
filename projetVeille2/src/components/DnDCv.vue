@@ -13,9 +13,15 @@
     <button class="submit">Submit</button>
   </form>
   <table>
+    <tr>
+      <th>Nom du cv</th>
+      <th>Date de soumission</th>
+      <th>Statut</th>
+    </tr>
     <tr v-for="cv in cvs" v-bind:key="cv">
       <td>{{ cv.nom }}</td>
       <td>{{ cv.dateSoumission }}</td>
+      <td>{{ cv.status }}</td>
     </tr>
   </table>
 </template>
@@ -114,11 +120,18 @@ table,
 td,
 th {
   border: 1px solid black;
+  text-align: center;
 }
 
 table {
   width: 50%;
   border-collapse: collapse;
+  background-color: lightgray;
+}
+
+table th {
+  background-color: black;
+  color: white;
 }
 </style>
 
