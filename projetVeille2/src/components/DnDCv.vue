@@ -34,7 +34,6 @@ export default {
   created() {
     this.fetchUser();
     this.fetchCvs();
-    setInterval(() => this.fetchCvs(), 100);
   },
   setup() {
     const { state } = global;
@@ -55,15 +54,18 @@ export default {
         })
         .then((data) => {
           this.fullUser = data;
+          this.fetchCvs();
         });
     },
     fetchCvs() {
-      fetch(`http://localhost:9191/stage/getCVs`)
+      console.log(this.fullUser.id);
+      fetch(`http://localhost:9191/stage/cv/etudiant/${this.fullUser.id}`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
           this.cvs = data;
+          console.log(this.cvs, "cvs");
         });
     },
     getFile() {
