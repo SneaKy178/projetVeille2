@@ -1,13 +1,13 @@
 <template>
-  <h1>Liste des offres</h1>
+  <h1>Contact</h1>
   <table>
     <tr>
-      <th>Titre de l'offre</th>
-      <th>Description de l'offre</th>
+      <th>Nom du gestionnaire</th>
+      <th>Courriel</th>
     </tr>
-    <tr v-for="offre in offres" v-bind:key="offre">
-      <td>{{ offre.titre }}</td>
-      <td>{{ offre.description }}</td>
+    <tr>
+      <td>{{ gestionnaire.prenom }} {{ gestionnaire.nom }}</td>
+      <td>{{ gestionnaire.courriel }}</td>
     </tr>
   </table>
 </template>
@@ -18,13 +18,13 @@ import global from "../../global";
 export default {
   created() {
     this.fetchUser();
-    this.fetchoffres();
+    this.fetchGestionnaire();
   },
   setup() {
     const { state } = global;
     const fullUser = ref({});
-    const offres = ref({});
-    return { state, fullUser, offres };
+    const gestionnaire = ref({});
+    return { state, fullUser, gestionnaire };
   },
 
   methods: {
@@ -37,17 +37,15 @@ export default {
           this.fullUser = data;
         });
     },
-    fetchoffres() {
-      fetch(`http://localhost:9191/stage/offres/etudiant/${this.fullUser.id}`)
+    fetchGestionnaire() {
+      fetch(`http://localhost:9191/stage/gestionnaire/1`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.offres = data;
+          this.gestionnaire = data;
+          console.log(this.gestionnaire, "gestionnaire");
         });
-    },
-    getFile() {
-      this.files = this.$refs.myFiles.files[0];
     },
   },
 };
@@ -74,6 +72,7 @@ table th {
   background-color: black;
   color: white;
 }
+
 h1 {
   margin-top: 20px;
   margin-bottom: 20px;

@@ -8,6 +8,7 @@ import AccountDetails from '../components/AccountDetails.vue'
 import DnD from '../components/DnDCv.vue'
 import DashboardSuperviseur from '../components/Dashboard/DashboardSuperviseur.vue'
 import DashboardEtudiant from '../components/Dashboard/DasboardEtudiant/DashboardEtudiant.vue'
+import DashboardMoniteur from '../components/Dashboard/DashboardMoniteur/DashboardMoniteur.vue'
 import Home from '../components/Home.vue'
 
 const routes = [
@@ -50,6 +51,10 @@ const routes = [
   {
     path: '/dashboardEtudiant',
     component: DashboardEtudiant
+  },
+  {
+    path: '/dashboardMoniteur',
+    component: DashboardMoniteur
   },
   {
     path: '/home',
