@@ -1,29 +1,35 @@
 <template>
-  <form method="post" action="#" id="#" @submit.prevent="handleSubmit">
-    <div class="form-group files">
-      <input
-        type="file"
-        id="file"
-        ref="myFiles"
-        class="custom-file-input"
-        v-on:change="getFile"
-        multiple
-      />
-    </div>
-    <button class="submit">Submit</button>
-  </form>
-  <table>
-    <tr>
-      <th>Nom du cv</th>
-      <th>Date de soumission</th>
-      <th>Statut</th>
-    </tr>
-    <tr v-for="cv in cvs" v-bind:key="cv">
-      <td>{{ cv.nom }}</td>
-      <td>{{ cv.dateSoumission }}</td>
-      <td>{{ cv.status }}</td>
-    </tr>
-  </table>
+  <div v-if="state.isLoggedIn">
+    <form method="post" action="#" id="#" @submit.prevent="handleSubmit">
+      <div class="form-group files">
+        <input
+          type="file"
+          id="file"
+          ref="myFiles"
+          class="custom-file-input"
+          v-on:change="getFile"
+          multiple
+        />
+      </div>
+      <button class="submit">Submit</button>
+    </form>
+    <table>
+      <tr>
+        <th>Nom du cv</th>
+        <th>Date de soumission</th>
+        <th>Statut</th>
+      </tr>
+      <tr v-for="cv in cvs" v-bind:key="cv">
+        <td>{{ cv.nom }}</td>
+        <td>{{ cv.dateSoumission }}</td>
+        <td>{{ cv.status }}</td>
+      </tr>
+    </table>
+  </div>
+  <div v-else class="center">
+    <h1>Veuillez vous conneter</h1>
+    <button @click="login">Login</button><br />
+  </div>
 </template>
 
 <script>
@@ -69,10 +75,15 @@ export default {
       this.files = this.$refs.myFiles.files[0];
     },
     fileToBase64(file, cb) {
-      if (file == null) {
-        window.alert("test");
+      if (file.length == 0) {
+        Swal.fire({
+          title: "Error!",
+          text: "Veuillez choisir un fichier avant de soumettre.",
+          icon: "error",
+          confirmButtonText: "ok",
+        });
       }
-      if (file != null) {
+      if (file.value != 0) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
@@ -104,6 +115,9 @@ export default {
         }
       });
     },
+    login() {
+      this.$router.push("/login");
+    },
   },
 };
 </script>
@@ -128,6 +142,10 @@ table {
 table th {
   background-color: black;
   color: white;
+}
+.center {
+  margin-top: 50px;
+  text-align: center;
 }
 </style>
 
