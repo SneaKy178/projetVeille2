@@ -38,7 +38,7 @@ export default {
         });
     },
     fetchoffres() {
-      fetch(`http://localhost:9191/stage/offres`)
+      fetch(`http://localhost:9191/stage/offres/etudiant/${this.fullUser.id}`)
         .then((res) => {
           return res.json();
         })

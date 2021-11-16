@@ -9,6 +9,8 @@ import DnD from '../components/DnDCv.vue'
 import DashboardSuperviseur from '../components/Dashboard/DashboardSuperviseur.vue'
 import DashboardEtudiant from '../components/Dashboard/DasboardEtudiant/DashboardEtudiant.vue'
 import DashboardMoniteur from '../components/Dashboard/DashboardMoniteur/DashboardMoniteur.vue'
+import DashboardGestionnaire from '../components/Dashboard/DashboardGestionnaire/DashboardGestionnaire.vue'
+
 import Home from '../components/Home.vue'
 
 const routes = [
@@ -55,6 +57,10 @@ const routes = [
   {
     path: '/dashboardMoniteur',
     component: DashboardMoniteur
+  },
+  {
+    path: '/dashboardGestionnaire',
+    component: DashboardGestionnaire
   },
   {
     path: '/home',

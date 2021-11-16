@@ -1,13 +1,9 @@
 <template>
-  <h1>Liste des offres</h1>
+  <h1>Liste des cvs</h1>
   <table>
     <tr>
-      <th>Titre de l'offre</th>
-      <th>Description de l'offre</th>
-    </tr>
-    <tr v-for="offre in offres" v-bind:key="offre">
-      <td>{{ offre.titre }}</td>
-      <td>{{ offre.description }}</td>
+      <td>Le nombre total de cvs</td>
+      <td>{{ cvs }}</td>
     </tr>
   </table>
 </template>
@@ -17,33 +13,24 @@ import { ref } from "vue";
 import global from "../../global";
 export default {
   created() {
-    this.fetchUser();
-    this.fetchoffres();
+    this.fetchCvs();
   },
   setup() {
     const { state } = global;
     const fullUser = ref({});
-    const offres = ref({});
-    return { state, fullUser, offres };
+    const cvs = ref({});
+
+    return { state, fullUser, cvs };
   },
 
   methods: {
-    fetchUser() {
-      fetch(`http://localhost:9191/user/${this.state.courriel}`)
+    fetchCvs() {
+      fetch(`http://localhost:9191/stage/getCVs`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.fullUser = data;
-        });
-    },
-    fetchoffres() {
-      fetch(`http://localhost:9191/stage/offres`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          this.offres = data;
+          this.cvs = data.length;
         });
     },
   },
@@ -56,7 +43,7 @@ table {
 }
 table,
 td,
-th {
+td {
   border: 1px solid black;
   text-align: center;
 }

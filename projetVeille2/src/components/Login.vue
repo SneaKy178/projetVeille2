@@ -13,8 +13,8 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 import global from "./global";
-
 export default {
   setup() {
     const { state } = global;
@@ -33,7 +33,12 @@ export default {
           if (res.ok) {
             return res.json();
           } else if (!res.ok) {
-            window.alert("Le courriel ou le mot de passe est invalide");
+            Swal.fire({
+              title: "Error!",
+              text: "Le courriel ou le mot de passe est invalide.",
+              icon: "error",
+              confirmButtonText: "ok",
+            });
           }
           throw res;
         })

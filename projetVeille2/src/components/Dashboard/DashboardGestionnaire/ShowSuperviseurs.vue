@@ -1,13 +1,13 @@
 <template>
-  <h1>Liste des offres</h1>
+  <h1>Liste des superviseurs</h1>
   <table>
     <tr>
-      <th>Titre de l'offre</th>
-      <th>Description de l'offre</th>
+      <th>Nom du superviseur</th>
+      <th>Courriel</th>
     </tr>
-    <tr v-for="offre in offres" v-bind:key="offre">
-      <td>{{ offre.titre }}</td>
-      <td>{{ offre.description }}</td>
+    <tr v-for="superviseur in superviseurs" v-bind:key="superviseur">
+      <td>{{ superviseur.prenom }} {{ superviseur.nom }}</td>
+      <td>{{ superviseur.courriel }}</td>
     </tr>
   </table>
 </template>
@@ -17,33 +17,23 @@ import { ref } from "vue";
 import global from "../../global";
 export default {
   created() {
-    this.fetchUser();
-    this.fetchoffres();
+    this.fetchSuperviseurs();
   },
   setup() {
     const { state } = global;
     const fullUser = ref({});
-    const offres = ref({});
-    return { state, fullUser, offres };
+    const superviseurs = ref({});
+    return { state, fullUser, superviseurs };
   },
 
   methods: {
-    fetchUser() {
-      fetch(`http://localhost:9191/user/${this.state.courriel}`)
+    fetchSuperviseurs() {
+      fetch(`http://localhost:9191/stage/superviseurs`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.fullUser = data;
-        });
-    },
-    fetchoffres() {
-      fetch(`http://localhost:9191/stage/offres`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          this.offres = data;
+          this.superviseurs = data;
         });
     },
   },

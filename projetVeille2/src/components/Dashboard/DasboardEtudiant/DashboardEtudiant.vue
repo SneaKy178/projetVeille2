@@ -43,6 +43,9 @@ export default {
           console.log(this.fullUser, "fulluser");
         });
     },
+    login() {
+      this.$router.push("/login");
+    },
   },
 };
 </script>

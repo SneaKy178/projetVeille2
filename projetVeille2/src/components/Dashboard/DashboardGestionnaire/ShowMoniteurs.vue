@@ -1,13 +1,13 @@
 <template>
-  <h1>Liste des offres</h1>
+  <h1>Liste des moniteurs</h1>
   <table>
     <tr>
-      <th>Titre de l'offre</th>
-      <th>Description de l'offre</th>
+      <th>Nom du moniteur</th>
+      <th>Courriel</th>
     </tr>
-    <tr v-for="offre in offres" v-bind:key="offre">
-      <td>{{ offre.titre }}</td>
-      <td>{{ offre.description }}</td>
+    <tr v-for="moniteur in moniteurs" v-bind:key="moniteur">
+      <td>{{ moniteur.prenom }} {{ moniteur.nom }}</td>
+      <td>{{ moniteur.courriel }}</td>
     </tr>
   </table>
 </template>
@@ -17,33 +17,23 @@ import { ref } from "vue";
 import global from "../../global";
 export default {
   created() {
-    this.fetchUser();
-    this.fetchoffres();
+    this.fetchmoniteurs();
   },
   setup() {
     const { state } = global;
     const fullUser = ref({});
-    const offres = ref({});
-    return { state, fullUser, offres };
+    const moniteurs = ref({});
+    return { state, fullUser, moniteurs };
   },
 
   methods: {
-    fetchUser() {
-      fetch(`http://localhost:9191/user/${this.state.courriel}`)
+    fetchmoniteurs() {
+      fetch(`http://localhost:9191/stage/moniteurs`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.fullUser = data;
-        });
-    },
-    fetchoffres() {
-      fetch(`http://localhost:9191/stage/offres`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          this.offres = data;
+          this.moniteurs = data;
         });
     },
   },

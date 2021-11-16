@@ -19,6 +19,9 @@
     <div v-if="state.role === 'MONITEUR'">
       <button @click="dashboardMoniteur">Voir votre dashboard</button>
     </div>
+    <div v-if="state.role === 'GESTIONNAIRE'">
+      <button @click="dashboardGestionnaire">Voir votre dashboard</button>
+    </div>
   </div>
   <div v-else class="center">
     <h1>Veuillez vous conneter</h1>
@@ -70,6 +73,9 @@ export default {
     },
     dashboardMoniteur() {
       this.$router.push("/dashboardMoniteur");
+    },
+    dashboardGestionnaire() {
+      this.$router.push("/dashboardGestionnaire");
     },
   },
 };

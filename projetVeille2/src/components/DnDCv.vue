@@ -33,7 +33,6 @@ import global from "./global";
 export default {
   created() {
     this.fetchUser();
-    this.fetchCvs();
   },
   setup() {
     const { state } = global;
@@ -52,20 +51,18 @@ export default {
         .then((res) => {
           return res.json();
         })
-        .then((data) => {
+        .then(async (data) => {
           this.fullUser = data;
-          this.fetchCvs();
+          await this.fetchCvs();
         });
     },
     fetchCvs() {
-      console.log(this.fullUser.id);
       fetch(`http://localhost:9191/stage/cv/etudiant/${this.fullUser.id}`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
           this.cvs = data;
-          console.log(this.cvs, "cvs");
         });
     },
     getFile() {
@@ -73,13 +70,9 @@ export default {
     },
     fileToBase64(file, cb) {
       if (file == null) {
-        Swal.fire({
-          title: "Error!",
-          text: "Vous devez sélectionner un fichier avant de submit",
-          icon: "error",
-          confirmButtonText: "ok",
-        });
-      } else if (file != null) {
+        window.alert("test");
+      }
+      if (file != null) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
@@ -95,18 +88,19 @@ export default {
         if (result) {
           result = result.substring(28);
 
-          var request = new XMLHttpRequest();
-          request.open("POST", "http://localhost:9191/stage/cv");
-          request.setRequestHeader(
-            "Content-Type",
-            "application/json; charset=UTF-8"
-          );
           const studentCv = JSON.stringify({
             data: result,
             etudiant: this.fullUser,
             nom: this.files.name,
           });
-          request.send(studentCv);
+
+          fetch("http://localhost:9191/stage/cv", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: studentCv,
+          }).then((res) => {
+            this.fetchCvs();
+          });
         }
       });
     },

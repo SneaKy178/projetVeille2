@@ -1,57 +1,59 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <label>Prénom : </label>
-    <input type="text" required v-model="prenom" />
-    <div v-if="prenomError" class="error">
-      {{ prenomError }}
-    </div>
+  <body>
+    <form @submit.prevent="handleSubmit">
+      <label>Prénom : </label>
+      <input type="text" required v-model="prenom" />
+      <div v-if="prenomError" class="error">
+        {{ prenomError }}
+      </div>
 
-    <label>Nom : </label>
-    <input type="text" required v-model="nom" />
-    <div v-if="nomError" class="error">
-      {{ nomError }}
-    </div>
+      <label>Nom : </label>
+      <input type="text" required v-model="nom" />
+      <div v-if="nomError" class="error">
+        {{ nomError }}
+      </div>
 
-    <label>Courriel : </label>
-    <input type="email" required v-model="courriel" />
+      <label>Courriel : </label>
+      <input type="email" required v-model="courriel" />
 
-    <label>Mot de passe : </label>
-    <input type="password" required v-model="password" />
-    <div v-if="passwordError" class="error">
-      {{ passwordError }}
-    </div>
+      <label>Mot de passe : </label>
+      <input type="password" required v-model="password" />
+      <div v-if="passwordError" class="error">
+        {{ passwordError }}
+      </div>
 
-    <label>Numéro de téléphone : </label>
-    <input type="text" required v-model="numTelephone" />
+      <label>Numéro de téléphone : </label>
+      <input type="text" required v-model="numTelephone" />
 
-    <label>Programme : </label>
-    <input type="text" required v-model="programme" />
+      <label>Programme : </label>
+      <input type="text" required v-model="programme" />
 
-    <label>Adresse : </label>
-    <input type="text" required v-model="adresse" />
+      <label>Adresse : </label>
+      <input type="text" required v-model="adresse" />
 
-    <label>Numéro de matricule : </label>
-    <input type="text" required v-model="numMatricule" />
+      <label>Numéro de matricule : </label>
+      <input type="text" required v-model="numMatricule" />
 
-    <div>
-      <input type="checkbox" v-model="voiture" />
-      <label>Avez-vous une voiture?</label>
-    </div>
+      <div>
+        <input type="checkbox" v-model="voiture" />
+        <label>Avez-vous une voiture?</label>
+      </div>
 
-    <div>
-      <input type="checkbox" v-model="license" />
-      <label>Avez-vous votre permis de conduite?</label>
-    </div>
+      <div>
+        <input type="checkbox" v-model="license" />
+        <label>Avez-vous votre permis de conduite?</label>
+      </div>
 
-    <div>
-      <input type="checkbox" required v-model="terms" />
-      <label>Acceptez vous de suivre les règles?</label>
-    </div>
+      <div>
+        <input type="checkbox" required v-model="terms" />
+        <label>Acceptez vous de suivre les règles?</label>
+      </div>
 
-    <div class="submit">
-      <button>Créez votre compte étudiant</button>
-    </div>
-  </form>
+      <div class="submit">
+        <button>Créez votre compte étudiant</button>
+      </div>
+    </form>
+  </body>
 </template>
 
 <script>

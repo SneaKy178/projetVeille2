@@ -1,8 +1,11 @@
 <template>
   <div v-if="state.isLoggedIn" class="center">
     <h1>Bonjour {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
-    <ShowContactGestionnaire />
     <ShowOffres />
+    <ShowEtudiants />
+    <ShowMoniteurs />
+    <ShowSuperviseurs />
+    <ShowCvs />
   </div>
   <div v-else class="center">
     <h1>Veuillez vous conneter</h1>
@@ -11,14 +14,20 @@
 </template>
 
 <script>
-import ShowContactGestionnaire from "./ShowContactGestionnaire.vue";
 import ShowOffres from "./ShowOffres.vue";
+import ShowEtudiants from "./ShowEtudiants.vue";
+import ShowMoniteurs from "./ShowMoniteurs.vue";
+import ShowSuperviseurs from "./ShowSuperviseurs.vue";
+import ShowCvs from "./ShowCvs.vue";
 import { ref } from "vue";
 import global from "../../global";
 export default {
   components: {
-    ShowContactGestionnaire,
     ShowOffres,
+    ShowEtudiants,
+    ShowMoniteurs,
+    ShowSuperviseurs,
+    ShowCvs,
   },
   setup() {
     const { state } = global;
