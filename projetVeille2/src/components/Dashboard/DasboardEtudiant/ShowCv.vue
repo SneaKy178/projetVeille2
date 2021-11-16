@@ -20,8 +20,6 @@ import global from "../../global";
 export default {
   created() {
     this.fetchUser();
-    this.fetchCvs();
-    setInterval(() => this.fetchCvs(), 100);
   },
   setup() {
     const { state } = global;
@@ -36,8 +34,9 @@ export default {
         .then((res) => {
           return res.json();
         })
-        .then((data) => {
+        .then(async (data) => {
           this.fullUser = data;
+          await this.fetchCvs();
         });
     },
     fetchCvs() {

@@ -11,7 +11,7 @@
       <button @click="dropCv">Soumettre ou voir votre/vos cvs</button>
     </div>
     <div v-if="state.role === 'SUPERVISEUR'">
-      <button @click="dashboardGestionnaire">Voir votre dashboard</button>
+      <button @click="dashboardSuperviseur">Voir votre dashboard</button>
     </div>
     <div v-if="state.role === 'ETUDIANT'">
       <button @click="dashboardEtudiant">Voir votre dashboard</button>
@@ -65,7 +65,7 @@ export default {
     dropCv() {
       this.$router.push("/dndCv");
     },
-    dashboardGestionnaire() {
+    dashboardSuperviseur() {
       this.$router.push("/dashboardSuperviseur");
     },
     dashboardEtudiant() {

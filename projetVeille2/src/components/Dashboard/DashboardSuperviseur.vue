@@ -1,6 +1,7 @@
 <template>
   <div v-if="state.isLoggedIn" class="center">
     <h1>Bonjour {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
+    <h1>Liste des étudiants qui vous sont assignés</h1>
     <table>
       <tr>
         <th>Prénom nom</th>
@@ -89,5 +90,9 @@ table {
 table th {
   background-color: black;
   color: white;
+}
+h1 {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 </style>
