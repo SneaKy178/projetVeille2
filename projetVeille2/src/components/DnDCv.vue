@@ -74,7 +74,7 @@ export default {
     getFile() {
       this.files = this.$refs.myFiles.files[0];
     },
-    fileToBase64(file, cb) {
+    fileToBase64(file, erreur) {
       if (file.length == 0) {
         Swal.fire({
           title: "Error!",
@@ -87,10 +87,10 @@ export default {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
-          cb(null, reader.result);
+          erreur(null, reader.result);
         };
         reader.onerror = function (error) {
-          cb(error, null);
+          erreur(error, null);
         };
       }
     },
@@ -109,8 +109,8 @@ export default {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: studentCv,
-          }).then((res) => {
-            this.fetchCvs();
+          }).then(async (res) => {
+            await this.fetchCvs();
           });
         }
       });

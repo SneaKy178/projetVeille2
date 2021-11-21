@@ -1,15 +1,17 @@
 <template>
-  <h1>Liste de cv</h1>
+  <h1>Liste des entrevues</h1>
   <table>
     <tr>
-      <th>Nom du cv</th>
-      <th>Date de soumission</th>
-      <th>Statut</th>
+      <th>Titre de l'entrevue</th>
+      <th>Date de l'entrevue</th>
+      <th>Heure de l'entrevue</th>
+      <th>Nom de l'entreprise</th>
     </tr>
-    <tr v-for="cv in cvs" v-bind:key="cv">
-      <td>{{ cv.nom }}</td>
-      <td>{{ cv.dateSoumission }}</td>
-      <td>{{ cv.status }}</td>
+    <tr v-for="entrevue in entrevues" v-bind:key="entrevue">
+      <td>{{ entrevue.titre }}</td>
+      <td>{{ entrevue.date }}</td>
+      <td>{{ entrevue.time }}</td>
+      <td>{{ entrevue.nomEntreprise }}</td>
     </tr>
   </table>
 </template>
@@ -24,8 +26,8 @@ export default {
   setup() {
     const { state } = global;
     const fullUser = ref({});
-    const cvs = ref({});
-    return { state, fullUser, cvs };
+    const entrevues = ref({});
+    return { state, fullUser, entrevues };
   },
 
   methods: {
@@ -36,16 +38,16 @@ export default {
         })
         .then(async (data) => {
           this.fullUser = data;
-          await this.fetchCvs();
+          await this.fetchEntrevues();
         });
     },
-    fetchCvs() {
-      fetch(`http://localhost:9191/stage/cv/etudiant/${this.fullUser.id}`)
+    fetchEntrevues() {
+      fetch(`http://localhost:9191/entrevue/etudiant/${this.fullUser.id}`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          this.cvs = data;
+          this.entrevues = data;
         });
     },
   },

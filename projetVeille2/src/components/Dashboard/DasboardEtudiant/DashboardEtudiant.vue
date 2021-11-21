@@ -4,6 +4,7 @@
     <ShowCv />
     <ShowContantSuperviseur />
     <ShowOffres />
+    <ShowEntrevues />
   </div>
   <div v-else class="center">
     <h1>Veuillez vous conneter</h1>
@@ -15,6 +16,7 @@
 import ShowCv from "./ShowCv.vue";
 import ShowContantSuperviseur from "./ShowContactSuperviseur.vue";
 import ShowOffres from "./ShowOffres.vue";
+import ShowEntrevues from "./ShowEntrevues.vue";
 import { ref } from "vue";
 import global from "../../global";
 export default {
@@ -22,6 +24,7 @@ export default {
     ShowCv,
     ShowContantSuperviseur,
     ShowOffres,
+    ShowEntrevues,
   },
   setup() {
     const { state } = global;

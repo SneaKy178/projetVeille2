@@ -3,6 +3,7 @@
     <h1>Bonjour {{ fullUser.prenom }} {{ fullUser.nom }}</h1>
     <ShowContactGestionnaire />
     <ShowOffres />
+    <CreateAndShowEntrevues />
   </div>
   <div v-else class="center">
     <h1>Veuillez vous conneter</h1>
@@ -13,12 +14,14 @@
 <script>
 import ShowContactGestionnaire from "./ShowContactGestionnaire.vue";
 import ShowOffres from "./ShowOffres.vue";
+import CreateAndShowEntrevues from "./CreateAndShowEntrevues.vue";
 import { ref } from "vue";
 import global from "../../global";
 export default {
   components: {
     ShowContactGestionnaire,
     ShowOffres,
+    CreateAndShowEntrevues,
   },
   setup() {
     const { state } = global;

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" class="center">
     <label>Courriel : </label>
     <input type="email" required v-model="courriel" />
 
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 form {
   max-width: 500px;
   background: white;
@@ -118,5 +118,11 @@ button {
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;
+}
+.center {
+  width: 400px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%);
 }
 </style>
