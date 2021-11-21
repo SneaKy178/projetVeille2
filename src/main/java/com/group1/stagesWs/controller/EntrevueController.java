@@ -1,18 +1,15 @@
 package com.group1.stagesWs.controller;
 
-import com.group1.stagesWs.model.CV;
 import com.group1.stagesWs.model.Entrevue;
-import com.group1.stagesWs.model.Superviseur;
 import com.group1.stagesWs.service.EntrevueService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/entrevue")
 public class EntrevueController {
 

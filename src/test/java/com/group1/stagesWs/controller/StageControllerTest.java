@@ -1,8 +1,7 @@
 package com.group1.stagesWs.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.group1.stagesWs.enums.CVStatus;
+import com.group1.stagesWs.enums.Status;
 import com.group1.stagesWs.model.CV;
 import com.group1.stagesWs.model.Etudiant;
 import com.group1.stagesWs.model.Offre;
@@ -20,7 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -125,7 +124,7 @@ public class StageControllerTest {
     void testAcceptCV() throws Exception {
         //Arrange
         CV expected = new CV();
-        expected.setStatus(CVStatus.ACCEPTED);
+        expected.setStatus(Status.ACCEPTED);
         when(stageService.acceptCV(any())).thenReturn(Optional.of(expected));
 
         //Act
@@ -136,7 +135,7 @@ public class StageControllerTest {
         //Assert
         var actual = mapper.readValue(result.getResponse().getContentAsString(), CV.class);
         assertThat(result.getResponse().getStatus()).isEqualTo(HttpStatus.OK.value());
-        assertThat(actual.getStatus()).isEqualTo(CVStatus.ACCEPTED);
+        assertThat(actual.getStatus()).isEqualTo(Status.ACCEPTED);
     }
 
     @Test
@@ -157,7 +156,7 @@ public class StageControllerTest {
     void testRejectCV() throws Exception {
         //Arrange
         CV expected = new CV();
-        expected.setStatus(CVStatus.REJECTED);
+        expected.setStatus(Status.REJECTED);
         when(stageService.rejectCV(any())).thenReturn(Optional.of(expected));
 
         //Act
@@ -168,7 +167,7 @@ public class StageControllerTest {
         //Assert
         var actual = mapper.readValue(result.getResponse().getContentAsString(), CV.class);
         assertThat(result.getResponse().getStatus()).isEqualTo(HttpStatus.OK.value());
-        assertThat(actual.getStatus()).isEqualTo(CVStatus.REJECTED);
+        assertThat(actual.getStatus()).isEqualTo(Status.REJECTED);
     }
 
     @Test
@@ -223,8 +222,8 @@ public class StageControllerTest {
                 "Banque NCA",
                 false,
                 "1345 Boul Leger Saint-Jean",
-                "2022-1-05",
-                "2022-4-05",
+                LocalDate.of(2022,01,05),
+                LocalDate.of(2022,04,05),
                 13,
                 "9:00 a 5:00",
                 40,

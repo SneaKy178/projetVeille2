@@ -4,7 +4,7 @@ import com.group1.stagesWs.model.Etudiant;
 import com.group1.stagesWs.model.Offre;
 import com.group1.stagesWs.model.Whitelist;
 import com.group1.stagesWs.repositories.EtudiantRepository;
-import com.group1.stagesWs.enums.CVStatus;
+import com.group1.stagesWs.enums.Status;
 import com.group1.stagesWs.model.*;
 import com.group1.stagesWs.repositories.CVRepository;
 import com.group1.stagesWs.repositories.OffreRepository;
@@ -77,12 +77,12 @@ public class StageService {
     }
 
     public Optional<CV> acceptCV(CV cv) {
-        cv.setStatus(CVStatus.ACCEPTED);
+        cv.setStatus(Status.ACCEPTED);
         return Optional.of(cvRepository.save(cv));
     }
 
     public Optional<CV> rejectCV(CV cv) {
-        cv.setStatus(CVStatus.REJECTED);
+        cv.setStatus(Status.REJECTED);
         return Optional.of(cvRepository.save(cv));
     }
 

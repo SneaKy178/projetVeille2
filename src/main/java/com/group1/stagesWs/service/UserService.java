@@ -1,10 +1,7 @@
 package com.group1.stagesWs.service;
 
 
-import com.group1.stagesWs.model.Etudiant;
-import com.group1.stagesWs.model.Moniteur;
-import com.group1.stagesWs.model.Superviseur;
-import com.group1.stagesWs.model.User;
+import com.group1.stagesWs.model.*;
 import com.group1.stagesWs.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,4 +73,28 @@ public class UserService {
     public List<Etudiant> getAllEtudiants() {
         return etudiantRepository.findAll();
     }
+
+    public List<Moniteur> getAllMoniteurs() {
+        return moniteurRepository.findAll();
+    }
+
+    public List<Superviseur> getAllSuperviseurs() {
+        return superviseurRepository.findAll();
+    }
+
+
+    public List<Etudiant> getAllEtudiantsBySuperviseur(int superviseurId) {
+        List<Etudiant> listAllEtudiantBySuperviseur = etudiantRepository.findAllEtudiantBySuperviseurId(superviseurId);
+        return  listAllEtudiantBySuperviseur;
+    }
+
+    public Gestionnaire getGestionnaire(int id) {
+       return gestionnaireRepository.findGestionnaireById(id);
+    }
+
+    public Etudiant getEtudiant(int id){
+        return etudiantRepository.findEtudiantById(id);
+    }
+
+
 }

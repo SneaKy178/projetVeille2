@@ -37,6 +37,21 @@
       </tr>
     </table>
   </form>
+  <h1>Liste des entrevues</h1>
+  <table>
+    <tr>
+      <th>Titre de l'entrevue</th>
+      <th>Date de l'entrevue</th>
+      <th>Heure de l'entrevue</th>
+      <th>Nom de l'étudiant</th>
+    </tr>
+    <tr v-for="entrevue in entrevues" v-bind:key="entrevue">
+      <td>{{ entrevue.titre }}</td>
+      <td>{{ entrevue.date }}</td>
+      <td>{{ entrevue.time }}</td>
+      <td>{{ entrevue.etudiant.prenom }} {{ entrevue.etudiant.nom }}</td>
+    </tr>
+  </table>
 </template>
 <script>
 import { ref } from "vue";
@@ -58,8 +73,8 @@ export default {
     const { state } = global;
     const fullUser = ref({});
     const etudiants = ref({});
-    const objectEtudiant = ref({});
-    return { state, fullUser, etudiants, objectEtudiant };
+    const entrevues = ref({});
+    return { state, fullUser, etudiants, entrevues };
   },
   methods: {
     fetchUser() {
@@ -69,6 +84,7 @@ export default {
         })
         .then((data) => {
           this.fullUser = data;
+          this.fetchEntrevues();
         });
     },
     fetchEtudiants() {
@@ -80,17 +96,21 @@ export default {
           this.etudiants = data;
         });
     },
+    fetchEntrevues() {
+      fetch(`http://localhost:9191/entrevue/moniteur/${this.fullUser.id}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          this.entrevues = data;
+          console.log(data, "entrevues data");
+          console.log(this.entrevues, "entrevues");
+        });
+    },
     handleSubmit() {
       fetch(`http://localhost:9191/stage/etudiant/${this.etudiant}`)
         .then((response) => response.json())
         .then((data) => {
-          var request = new XMLHttpRequest();
-          request.open("POST", "http://localhost:9191/entrevue");
-          request.setRequestHeader(
-            "Content-Type",
-            "application/json; charset=UTF-8"
-          );
-
           const entrevue = JSON.stringify({
             titre: this.titre,
             date: this.date,
@@ -100,8 +120,13 @@ export default {
             nomEntreprise: this.fullUser.nomEntreprise,
           });
 
-          console.log(entrevue);
-          request.send(entrevue);
+          fetch("http://localhost:9191/entrevue", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: entrevue,
+          }).then(async (res) => {
+            await this.fetchEntrevues();
+          });
         });
     },
   },

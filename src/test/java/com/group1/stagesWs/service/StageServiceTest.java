@@ -1,6 +1,6 @@
 package com.group1.stagesWs.service;
 
-import com.group1.stagesWs.enums.CVStatus;
+import com.group1.stagesWs.enums.Status;
 import com.group1.stagesWs.model.CV;
 import com.group1.stagesWs.model.Etudiant;
 import com.group1.stagesWs.model.Offre;
@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -100,7 +101,7 @@ public class StageServiceTest {
         //Assert
         assertThat(returned).isEqualTo(Optional.of(expected));
         assertThat(returned.isPresent()).isTrue();
-        assertThat(returned.get().getStatus()).isEqualTo(CVStatus.ACCEPTED);
+        assertThat(returned.get().getStatus()).isEqualTo(Status.ACCEPTED);
     }
 
     @Test
@@ -116,7 +117,7 @@ public class StageServiceTest {
         //Assert
         assertThat(returned).isEqualTo(Optional.of(expected));
         assertThat(returned.isPresent()).isTrue();
-        assertThat(returned.get().getStatus()).isEqualTo(CVStatus.REJECTED);
+        assertThat(returned.get().getStatus()).isEqualTo(Status.REJECTED);
     }
 
     @Test
@@ -153,8 +154,8 @@ public class StageServiceTest {
                 "Banque NCA",
                 false,
                 "1345 Boul Leger Saint-Jean",
-                "2022-1-05",
-                "2022-4-05",
+                LocalDate.of(2022,01,05),
+                LocalDate.of(2022,04,05),
                 13,
                 "9:00 a 5:00",
                 40,

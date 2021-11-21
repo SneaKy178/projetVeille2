@@ -46,9 +46,6 @@ export default {
           this.offres = data;
         });
     },
-    getFile() {
-      this.files = this.$refs.myFiles.files[0];
-    },
   },
 };
 </script>

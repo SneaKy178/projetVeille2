@@ -4,6 +4,8 @@ package com.group1.stagesWs.model;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Set;
@@ -18,6 +20,10 @@ public class Etudiant extends User implements Serializable {
 
     private boolean hasLicense;
     private boolean hasVoiture;
+
+    @ManyToOne
+    @JoinColumn(name="superviseur_id")
+    private Superviseur superviseur;
 
     @OneToMany
     private Set<Offre> offres;

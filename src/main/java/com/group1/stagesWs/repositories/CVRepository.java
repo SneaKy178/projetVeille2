@@ -1,10 +1,9 @@
 package com.group1.stagesWs.repositories;
 
 import com.group1.stagesWs.model.CV;
-import com.group1.stagesWs.model.Etudiant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.group1.stagesWs.enums.CVStatus;
+import com.group1.stagesWs.enums.Status;
 
 import java.util.List;
 
@@ -14,5 +13,5 @@ public interface CVRepository extends JpaRepository<CV, Integer> {
 
     CV findCvById(int id);
 
-    List<CV> findAllByStatus(CVStatus status);
+    List<CV> findAllByStatus(Status status);
 }

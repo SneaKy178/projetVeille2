@@ -1,10 +1,7 @@
 package com.group1.stagesWs.controller;
 
 
-import com.group1.stagesWs.model.Etudiant;
-import com.group1.stagesWs.model.Moniteur;
-import com.group1.stagesWs.model.Superviseur;
-import com.group1.stagesWs.model.User;
+import com.group1.stagesWs.model.*;
 import com.group1.stagesWs.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,5 +63,30 @@ public class UserController {
     @GetMapping(path = "/stage/etudiants")
     public ResponseEntity<List<Etudiant>> getAllEtudiants() {
         return new ResponseEntity<>(service.getAllEtudiants(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/stage/moniteurs")
+    public ResponseEntity<List<Moniteur>> getAllMoniteurs() {
+        return new ResponseEntity<>(service.getAllMoniteurs(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/stage/superviseurs")
+    public ResponseEntity<List<Superviseur>> getAllSuperviseurs() {
+        return new ResponseEntity<>(service.getAllSuperviseurs(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/stage/superviseur/etudiants/{idSuperviseur}")
+    public ResponseEntity<List<Etudiant>> getAllEtudiantBySuperviseur(@PathVariable int idSuperviseur) {
+        return new ResponseEntity<>(service.getAllEtudiantsBySuperviseur(idSuperviseur), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/stage/gestionnaire/{id}")
+    public Gestionnaire getGestionnaire(@PathVariable int id) {
+        return service.getGestionnaire(id);
+    }
+
+    @GetMapping(path = "stage/etudiant/{id}")
+    public ResponseEntity<Etudiant> getEtudiant(@PathVariable("id") int id){
+        return new ResponseEntity<>(service.getEtudiant(id), HttpStatus.OK);
     }
 }

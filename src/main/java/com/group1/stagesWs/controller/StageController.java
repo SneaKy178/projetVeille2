@@ -115,7 +115,7 @@ public class StageController {
         }
     }
 
-    @GetMapping("/stage/cv")
+    @GetMapping("/stage/getCVs")
     public ResponseEntity<List<CV>> getAllCVs() {
         return new ResponseEntity<List<CV>>(stageService.getAllCVs(), HttpStatus.OK);
     }

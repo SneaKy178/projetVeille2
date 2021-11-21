@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -19,8 +20,8 @@ public class Offre implements Serializable {
     private String entreprise;
     private boolean isValid;
     private String adresse;
-    private String dateDebut;
-    private String dateFin;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
     private int nbTotalSemaine;
     private String horaire;
     private double nbTotalHeuresParSemaine;
@@ -38,7 +39,7 @@ public class Offre implements Serializable {
         visibiliteEtudiant = new Whitelist();
     }
 
-    public Offre(String titre, String description, String entreprise, boolean isValid, String adresse, String dateDebut, String dateFin, int nbTotalSemaine, String horaire, double nbTotalHeuresParSemaine, double tauxHoraire) {
+    public Offre(String titre, String description, String entreprise, boolean isValid, String adresse, LocalDate dateDebut, LocalDate dateFin, int nbTotalSemaine, String horaire, double nbTotalHeuresParSemaine, double tauxHoraire) {
         this.titre = titre;
         this.description = description;
         this.entreprise = entreprise;

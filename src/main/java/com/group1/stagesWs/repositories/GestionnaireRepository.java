@@ -12,4 +12,7 @@ public interface GestionnaireRepository extends JpaRepository<Gestionnaire, Inte
 
     Gestionnaire findGestionnaireByCourrielIgnoreCaseAndPassword(String courriel, String pwd);
 
+    Gestionnaire findGestionnaireById(int id);
+
+
 }
