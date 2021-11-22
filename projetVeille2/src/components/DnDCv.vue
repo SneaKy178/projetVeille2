@@ -1,17 +1,26 @@
 <template>
   <div v-if="state.isLoggedIn">
     <form method="post" action="#" id="#" @submit.prevent="handleSubmit">
-      <div class="form-group files">
-        <input
+      <div class="form-group files file center box">
+        <!-- <input
           type="file"
           id="file"
           ref="myFiles"
-          class="custom-file-input"
+          class="file"
+          v-on:change="getFile"
+          multiple
+        /> -->
+
+        <label for="file-upload" class="custom-file-upload"> CV </label>
+        <input
+          id="file-upload"
+          type="file"
+          ref="myFiles"
           v-on:change="getFile"
           multiple
         />
       </div>
-      <button class="submit">Submit</button>
+      <button class="submit center">Submit</button>
     </form>
     <table>
       <tr>
@@ -134,6 +143,7 @@ th {
 }
 
 table {
+  margin-top: 60px;
   width: 50%;
   border-collapse: collapse;
   background-color: lightgray;
@@ -146,6 +156,41 @@ table th {
 .center {
   margin-top: 50px;
   text-align: center;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  border-style: dashed;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 37%;
+  left: 42%;
+}
+
+.center {
+  width: 400px;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
+}
+
+button {
+  margin-top: 20px;
+}
+
+.box {
+  width: 500px;
+  height: 250px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  border: 1px solid black;
+  border-style: dashed;
 }
 </style>
 

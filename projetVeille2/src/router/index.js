@@ -7,11 +7,10 @@ import Login from '../components/Login.vue'
 import AccountDetails from '../components/AccountDetails.vue'
 import DnD from '../components/DnDCv.vue'
 import DashboardSuperviseur from '../components/Dashboard/DashboardSuperviseur.vue'
-import DashboardEtudiant from '../components/Dashboard/DasboardEtudiant/DashboardEtudiant.vue'
+import DashboardEtudiant from '../components/Dashboard/DashboardEtudiant/DashboardEtudiant.vue'
 import DashboardMoniteur from '../components/Dashboard/DashboardMoniteur/DashboardMoniteur.vue'
 import DashboardGestionnaire from '../components/Dashboard/DashboardGestionnaire/DashboardGestionnaire.vue'
 
-import Home from '../components/Home.vue'
 
 const routes = [
   {
@@ -62,10 +61,6 @@ const routes = [
     path: '/dashboardGestionnaire',
     component: DashboardGestionnaire
   },
-  {
-    path: '/home',
-    component: Home
-  }
 
 
 

@@ -1,29 +1,69 @@
 <template>
   <nav>
-    <!-- <div v-if="!fullUser.isLoggedIn === 'true'"> -->
-    <div class="menu-item"><router-link to="/home">Home</router-link></div>
     <div class="menu-item">
-      <router-link to="/formEtudiant">Form Etudiant</router-link>
-    </div>
-    <div class="menu-item">
-      <router-link to="/formMoniteur">Form Moniteur</router-link>
-    </div>
-    <div class="menu-item">
-      <router-link to="/formSuperviseur">Form Superviseur</router-link>
-    </div>
-    <div class="menu-item">
-      <router-link to="/accountDetails">Account Details</router-link>
-    </div>
-    <!-- </div> -->
-    <div class="menu-item">
-      <router-link to="/login">Login</router-link>
+      <div v-if="state.isLoggedIn">
+        <router-link to="/home" class="link">Home</router-link>
+        <router-link to="/accountDetails" class="link"
+          >Account Details</router-link
+        >
+        <router-link
+          to="/dashboardEtudiant"
+          class="link"
+          v-if="state.role === 'ETUDIANT'"
+          >Dashboard</router-link
+        >
+        <router-link
+          to="/dashboardMoniteur"
+          class="link"
+          v-if="state.role === 'MONITEUR'"
+          >Dashboard</router-link
+        >
+        <router-link
+          to="/dashboardSuperviseur"
+          class="link"
+          v-if="state.role === 'SUPERVISEUR'"
+          >Dashboard</router-link
+        >
+        <router-link
+          to="/dashboardGestionnaire"
+          class="link"
+          v-if="state.role === 'GESTIONNAIRE'"
+          >Dashboard</router-link
+        >
+        <router-link to="/dndCv" class="link" v-if="state.role === 'ETUDIANT'"
+          >Cv</router-link
+        >
+
+        <router-link
+          to="/formOffres"
+          class="link"
+          v-if="state.role === 'MONITEUR' || state.role === 'GESTIONNAIRE'"
+          >Offres</router-link
+        >
+      </div>
+      <div v-if="!state.isLoggedIn">
+        <router-link to="/formEtudiant" class="link">Form Etudiant</router-link>
+
+        <router-link to="/formMoniteur" class="link">Form Moniteur</router-link>
+        <router-link to="/formSuperviseur" class="link"
+          >Form Superviseur</router-link
+        >
+        <router-link to="/accountDetails" class="link"
+          >Account Details</router-link
+        >
+        <router-link to="/login" class="link">Login</router-link>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
+import global from "../global";
 export default {
-  name: "navbar",
+  setup() {
+    const { state } = global;
+    return { state };
+  },
 };
 </script>
 
@@ -43,15 +83,13 @@ nav .menu-item {
   transition: 0.4s;
 }
 
-nav .menu-item.active,
-nav .menu-item:hover {
-  background-color: #444;
-  border-bottom-color: cyan;
-}
-
 nav .menu-item a {
   color: inherit;
   text-decoration: none;
+}
+.link {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 </style>
 
