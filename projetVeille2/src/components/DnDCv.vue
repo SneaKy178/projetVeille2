@@ -153,10 +153,6 @@ table th {
   background-color: black;
   color: white;
 }
-.center {
-  margin-top: 50px;
-  text-align: center;
-}
 
 .custom-file-upload {
   border: 1px solid #ccc;
@@ -173,6 +169,8 @@ table th {
 }
 
 .center {
+  margin-top: 50px;
+  text-align: center;
   width: 400px;
   left: 50%;
   position: relative;
@@ -191,6 +189,16 @@ button {
 
   border: 1px solid black;
   border-style: dashed;
+}
+
+button {
+  background: #0b6dff;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
 }
 </style>
 

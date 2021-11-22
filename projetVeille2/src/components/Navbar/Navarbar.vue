@@ -2,7 +2,6 @@
   <nav>
     <div class="menu-item">
       <div v-if="state.isLoggedIn">
-        <router-link to="/home" class="link">Home</router-link>
         <router-link to="/accountDetails" class="link"
           >Account Details</router-link
         >

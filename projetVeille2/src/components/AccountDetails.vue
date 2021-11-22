@@ -1,6 +1,6 @@
 <template>
-  <form>
-    <div v-if="state.isLoggedIn">
+  <div v-if="state.isLoggedIn" class="center">
+    <form>
       <label>Prénom : </label>
       <input type="text" readonly :value="fullUser.prenom" />
 
@@ -12,47 +12,51 @@
 
       <label>Numéro de téléphone : </label>
       <input type="text" readonly :value="fullUser.numTelephone" />
-    </div>
 
-    <div v-if="fullUser.role === 'ETUDIANT'">
-      <label>Programme : </label>
-      <input type="text" readonly :value="fullUser.programme" />
+      <div v-if="fullUser.role === 'ETUDIANT'">
+        <label>Programme : </label>
+        <input type="text" readonly :value="fullUser.programme" />
 
-      <label>Adresse : </label>
-      <input type="text" readonly :value="fullUser.adresse" />
+        <label>Adresse : </label>
+        <input type="text" readonly :value="fullUser.adresse" />
 
-      <label>Numéro de matricule : </label>
-      <input type="text" readonly :value="fullUser.numMatricule" />
+        <label>Numéro de matricule : </label>
+        <input type="text" readonly :value="fullUser.numMatricule" />
 
-      <div>
-        <input type="checkbox" disabled :checked="fullUser.hasVoiture" />
-        <label>Avez-vous une voiture?</label>
+        <div>
+          <input type="checkbox" disabled :checked="fullUser.hasVoiture" />
+          <label>Avez-vous une voiture?</label>
+        </div>
+
+        <div>
+          <input type="checkbox" disabled :checked="fullUser.hasLicense" />
+          <label>Avez-vous votre permis de conduite?</label>
+        </div>
       </div>
+      <div v-if="fullUser.role === 'SUPERVISEUR'">
+        <label>Le nom de votre département : </label>
+        <input type="text" readonly :value="fullUser.departement" />
 
-      <div>
-        <input type="checkbox" disabled :checked="fullUser.hasLicense" />
-        <label>Avez-vous votre permis de conduite?</label>
+        <label>Votre spécialité: </label>
+        <input type="text" readonly :value="fullUser.specialite" />
       </div>
-    </div>
-    <div v-if="fullUser.role === 'SUPERVISEUR'">
-      <label>Le nom de votre département : </label>
-      <input type="text" readonly :value="fullUser.departement" />
+      <div v-if="fullUser.role === 'MONITEUR'">
+        <label>Nom de votre entreprise : </label>
+        <input type="text" readonly :value="fullUser.nomEntreprise" />
 
-      <label>Votre spécialité: </label>
-      <input type="text" readonly :value="fullUser.specialite" />
-    </div>
-    <div v-if="fullUser.role === 'MONITEUR'">
-      <label>Nom de votre entreprise : </label>
-      <input type="text" readonly :value="fullUser.nomEntreprise" />
-
-      <label>L'adresse de votre entreprise: </label>
-      <input type="text" readonly :value="fullUser.adresseEntreprise" />
-    </div>
-    <div v-if="fullUser.role === 'GESTIONNAIRE'">
-      <label>Le nom de votre département : </label>
-      <input type="text" readonly :value="fullUser.departement" />
-    </div>
-  </form>
+        <label>L'adresse de votre entreprise: </label>
+        <input type="text" readonly :value="fullUser.adresseEntreprise" />
+      </div>
+      <div v-if="fullUser.role === 'GESTIONNAIRE'">
+        <label>Le nom de votre département : </label>
+        <input type="text" readonly :value="fullUser.departement" />
+      </div>
+    </form>
+  </div>
+  <div v-else class="center">
+    <h1>Veuillez vous conneter</h1>
+    <button @click="login">Login</button><br />
+  </div>
 </template>
 
 <script>
@@ -80,6 +84,9 @@ export default {
           this.fullUser = data;
           console.log(this.fullUser, "fulluser");
         });
+    },
+    login() {
+      this.$router.push("/login");
     },
   },
 };
@@ -150,5 +157,24 @@ button {
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;
+}
+
+button {
+  background: #0b6dff;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.center {
+  margin-top: 50px;
+  text-align: center;
+  width: 400px;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
 }
 </style>

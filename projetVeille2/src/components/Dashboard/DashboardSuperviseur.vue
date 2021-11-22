@@ -82,7 +82,7 @@ th {
 }
 
 table {
-  width: 50%;
+  width: 400px;
   border-collapse: collapse;
   background-color: lightgray;
 }
@@ -94,5 +94,24 @@ table th {
 h1 {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.center {
+  margin-top: 50px;
+  text-align: center;
+  width: 400px;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%);
+}
+
+button {
+  background: #0b6dff;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
 }
 </style>
