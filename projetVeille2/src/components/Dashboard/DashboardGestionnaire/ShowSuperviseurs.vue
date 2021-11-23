@@ -40,10 +40,6 @@ export default {
 };
 </script>
 <style scoped>
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
 table,
 td,
 th {
@@ -52,7 +48,9 @@ th {
 }
 
 table {
-  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
   border-collapse: collapse;
   background-color: lightgray;
 }

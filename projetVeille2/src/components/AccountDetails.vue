@@ -25,12 +25,12 @@
 
         <div>
           <input type="checkbox" disabled :checked="fullUser.hasVoiture" />
-          <label>Avez-vous une voiture?</label>
+          <label>A une voiture</label>
         </div>
 
         <div>
           <input type="checkbox" disabled :checked="fullUser.hasLicense" />
-          <label>Avez-vous votre permis de conduite?</label>
+          <label>A un permis de conduite</label>
         </div>
       </div>
       <div v-if="fullUser.role === 'SUPERVISEUR'">

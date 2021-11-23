@@ -1,6 +1,6 @@
 <template>
   <h1>Contact</h1>
-  <table>
+  <table class="center">
     <tr>
       <th>Nom du superviseur</th>
       <th>Courriel</th>
@@ -54,7 +54,7 @@ th {
 }
 
 table {
-  width: 50%;
+  width: 600px;
   border-collapse: collapse;
   background-color: lightgray;
 }

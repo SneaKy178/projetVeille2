@@ -63,7 +63,7 @@ th {
 }
 
 table {
-  width: 50%;
+  width: 600px;
   border-collapse: collapse;
   background-color: lightgray;
 }

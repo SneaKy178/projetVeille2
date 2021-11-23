@@ -84,15 +84,6 @@ table th {
   color: white;
 }
 
-.center {
-  margin-top: 50px;
-  text-align: center;
-  width: 400px;
-  left: 50%;
-  position: relative;
-  transform: translate(-50%);
-}
-
 button {
   background: #0b6dff;
   border: 0;

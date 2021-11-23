@@ -2,16 +2,10 @@
   <div v-if="state.isLoggedIn">
     <form method="post" action="#" id="#" @submit.prevent="handleSubmit">
       <div class="form-group files file center box">
-        <!-- <input
-          type="file"
-          id="file"
-          ref="myFiles"
-          class="file"
-          v-on:change="getFile"
-          multiple
-        /> -->
-
-        <label for="file-upload" class="custom-file-upload"> CV </label>
+        <label for="file-upload" id="file" class="custom-file-upload cv">
+          <i class="fa fa-upload" aria-hidden="true"></i>
+          Upload
+        </label>
         <input
           id="file-upload"
           type="file"
@@ -42,6 +36,8 @@
 </template>
 
 <script>
+window.$ = window.jQuery = require("jquery");
+
 import Swal from "sweetalert2";
 import { ref } from "vue";
 import global from "./global";
@@ -82,6 +78,7 @@ export default {
     },
     getFile() {
       this.files = this.$refs.myFiles.files[0];
+      document.querySelector("#file").textContent = this.files.name;
     },
     fileToBase64(file, erreur) {
       if (file.length == 0) {
@@ -153,19 +150,25 @@ table th {
   background-color: black;
   color: white;
 }
+input[type="file"] {
+  margin-top: 150px;
+  margin-left: 90px;
+  color: white;
+}
 
 .custom-file-upload {
   border: 1px solid #ccc;
   border-style: dashed;
-  display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
 
   width: 100px;
   height: 50px;
   position: absolute;
-  top: 37%;
-  left: 42%;
+  top: 42%;
+  left: 30%;
+  color: white;
+  width: 200px;
 }
 
 .center {
@@ -189,6 +192,7 @@ button {
 
   border: 1px solid black;
   border-style: dashed;
+  background-color: green;
 }
 
 button {
@@ -199,6 +203,14 @@ button {
   color: white;
   border-radius: 20px;
   font-size: 16px;
+}
+
+.cv {
+  padding-top: 15px;
+}
+
+input[type="file"] {
+  display: none;
 }
 </style>
 

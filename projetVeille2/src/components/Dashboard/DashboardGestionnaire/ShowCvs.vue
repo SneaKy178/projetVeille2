@@ -3,7 +3,15 @@
   <table>
     <tr>
       <td>Le nombre total de cvs</td>
-      <td>{{ cvs }}</td>
+      <td>{{ cvs.length }}</td>
+    </tr>
+    <tr>
+      <th>Nom du cv</th>
+      <th>Nom de l'étudiant</th>
+    </tr>
+    <tr v-for="cv in cvs" v-bind:key="cv">
+      <td>{{ cv.nom }}</td>
+      <td>{{ cv.etudiant.prenom }}</td>
     </tr>
   </table>
 </template>
@@ -30,7 +38,8 @@ export default {
           return res.json();
         })
         .then((data) => {
-          this.cvs = data.length;
+          this.cvs = data;
+          console.log(data, "cvs");
         });
     },
   },
@@ -49,7 +58,7 @@ td {
 }
 
 table {
-  width: 50%;
+  width: 600px;
   border-collapse: collapse;
   background-color: lightgray;
 }
